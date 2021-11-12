@@ -49,7 +49,7 @@ const a = [{
     ]} ,
     
     {
-      name: "Yahalom",
+    name: "Yahalom",
     surName: "Cohen",
     birth: "03/11/1993",
     phone: "0542305392",

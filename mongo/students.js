@@ -63,6 +63,7 @@ const a = [{
 async function writeFile()
 {
     await fs.writeFile("zzz.js" , JSON.stringify(a))
+    //console.log(c)
 
 }
 

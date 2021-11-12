@@ -59,10 +59,24 @@
  ])
  ### Insert the following documents into a posts collection
  - db.posts.insertMany([ <br>
+ {userName: "GoodGuyGreg" , title: "Passes out at party" , body: "Wakes up early and cleans house"} <br>
  {userName: "GoodGuyGreg" , title: "Steals your identity" , body: "Raises your credit score" } ,<br> {userName: "GoodGuyGreg" , title: "Reports a bug in your code", body: "Sends you a Pull request"} , <br> {userName: "ScumbagSteve" , title: "Borrows something" , body: "Sells it"} , <br> 
  {userName: "ScumbagSteve", title: "Borrows everything" , body: "The end"} , <br> 
  {userName: "ScumbagSteve" , title: "Forks your repo on github", title: "Sets to private"} <br>
   ])
  ### Insert the following documents into a comments collection
+ - db.posts.findOne({title: "Borrows something"} ,{_id: 1})._id
+ -  db.comments.insert({userName:"GoodGuyGreg" , comment: "Hope you got a good deal!" , post: ["618e5486676ba91f85e33420" ]}) <br>
+ - db.posts.findOne({title: "Borrows everything"} , {_id: 1})._id
+ - db.comments.insert({userName: "GoodGuyGreg" , title: "What's mine is yours!" , post: ["618e5486676ba91f85e33421"]}) <br>
+ - db.posts.findOne({title: "Forks your repo on github"})._id
+ - db.comments.insert({userName: "ScumbagSteve", comment: "Don't violate the 
+licensing agreement!", post: ["618e5486676ba91f85e33422"]}) <br>
+ - db.posts.findOne({title:"Passes out at party"} ,{_id:1})._id
+ -  db.comments.insert({userName: "ScumbagSteve" , comment: "It still isn't clean" , post: ["618e7ecb676ba91f85e3342e"]}) <br>
+ - db.posts.findOne({title:  "Reports a bug in your code"} , {_id:1})._id
+ - db.comments.insert({userName: "ScumbagSteve" , comment: "Denied your PR cause I found a hack" , post: []})
+
+ 
 
 

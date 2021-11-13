@@ -75,7 +75,25 @@ licensing agreement!", post: ["618e5486676ba91f85e33422"]}) <br>
  - db.posts.findOne({title:"Passes out at party"} ,{_id:1})._id
  -  db.comments.insert({userName: "ScumbagSteve" , comment: "It still isn't clean" , post: ["618e7ecb676ba91f85e3342e"]}) <br>
  - db.posts.findOne({title:  "Reports a bug in your code"} , {_id:1})._id
- - db.comments.insert({userName: "ScumbagSteve" , comment: "Denied your PR cause I found a hack" , post: []})
+ - db.comments.insert({userName: "ScumbagSteve" , comment: "Denied your PR cause I found a hack" , post: ["618e5486676ba91f85e3341f"]})
+ ## Querying related collections
+### find all users
+- db.users.find({});
+### find all posts
+- db.posts.find({})
+### find all posts that was authored by "GoodGuyGreg"
+- db.posts.find({userName: "GoodGuyGreg"})
+### find all posts that was authored by "ScumbagSteve"
+- db.posts.find({userName: "ScumbagSteve"})
+### find all comments
+- db.comments.find({})
+### find all comments that was authored by "GoodGuyGreg"
+-  db.comments.find({userName: "GoodGuyGreg"})
+### find all comments that was authored by "ScumbagSteve"
+-  db.comments.find({userName: "ScumbagSteve"})
+### find all comments belonging to the post "Reports a bug in your code"
+-  db.comments.find({post: ["618e5486676ba91f85e3341f"]})
+## bonus
 
  
 

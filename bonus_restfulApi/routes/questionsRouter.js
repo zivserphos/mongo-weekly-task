@@ -2,10 +2,10 @@ const express = require("express");
 const questionsRouter = express.Router();
 const path = require("path");
 const mongoose = require("mongoose");
-const { response } = require("express");
-// const Question = require("../mongo/question")
-const env = require("dotenv").config();
+const env = require("dotenv").config({ path: "./.env" });
 const url = process.env.URL;
+const notFound = { status: 404, message: "Not Found" };
+const badRequest = (err) => ({ status: 400, message: err.message || "Bad Request"});
 mongoose.connect(url);
 
 const db = mongoose.connection;
@@ -28,19 +28,35 @@ const Question = mongoose.model(
 
 questionsRouter.get("/list", async (req, res, next) => {
   try {
-    console.log(db.Question);
-    return res.send(await Question.find({}));
+    const response = await Question.find({});
+    if (!response) {
+      throw notFound;
+    }
+    res.send(response);
   } catch (err) {
-    next({ status: 500, message: { error: "could not succed" } });
+    if (!err.status) {
+      err = badRequest(err);
+    }
+    next(err);
   }
 });
 
 questionsRouter.get(
   "/read/by/difficulty/:difficulty",
   async (req, res, next) => {
-    const response = await Question.find({ difficulty: { $gte: 5 } });
-    console.log(response);
-    res.send(response);
+    try {
+      const difficulty = req.params.difficulty
+      if (difficulty.typeOf !== Number) {
+        throw "error"
+      }
+      const response = await Question.find({ difficuty: { $gte: difficulty } });
+      res.send(response);
+    } catch (err) {
+      if (!err.status) {
+        err = badRequest(err);
+      }
+      next(err);
+    }
   }
 );
 
@@ -53,10 +69,13 @@ questionsRouter.put("/update", async (req, res, next) => {
       { new: true }
     );
     if (!response) {
-      throw { status: 403, message: "Bad request" };
+      throw notFound;
     }
-    res.send({ response });
+    res.send(response);
   } catch (err) {
+    if (!err.status) {
+      err = badRequest(err);
+    }
     next(err);
   }
 });
@@ -65,10 +84,13 @@ questionsRouter.post("/create", async (req, res, next) => {
   try {
     const response = await Question.create(question);
     if (!response) {
-      throw { status: 403, message: "Bad request" };
+      throw notFound;
     }
     res.send({ status: "inserted succesfully", response });
   } catch (err) {
+    if (!err.status) {
+      err = badRequest(err);
+    }
     next(err);
   }
 });
@@ -76,12 +98,12 @@ questionsRouter.delete("/remove/:id", async (req, res, next) => {
   try {
     const response = await Question.deleteOne({ _id: req.params.id });
     if (response.deletedCount === 0) {
-      throw { status: 404, message: "Not found" };
+      throw notFound;
     }
     res.send("deleted succesfully");
   } catch (err) {
     if (!err.status) {
-      err = { status: 403, message: err.message };
+      err = badRequest(err);
     }
     next(err);
   }

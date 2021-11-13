@@ -4,8 +4,15 @@
  ### Create collection: 
    - db.createCollection("students")
  ### insert students 
-  - db.students.insert({<br>
-  name:"Ido" , surName: "Arbel", birth: "26/01/1998" , phone: "0526305421" , gender: "Male" , courses: ["Java" , "Math",] <br>
+   - db.students.insert({<br>
+  name:"Ido" , <br>
+  surName: "Arbel", <br>
+   birth: "26/01/1998" , <br>
+   phone: "0526305421" ,<br>
+    gender: "Male" , <br>
+    courses: [<br>
+    "Java" , "Math", <br>
+    ] <br>
   }) <br>
   - db.students.insertMany([<br>
       {name:"Chen",surName:"Halevi",birth:"11/03/1997",phone:"0526323421",gender:"Male",courses:["Math","Law"]}, <br> 

@@ -1,21 +1,12 @@
 const express = require("express");
-const cors = require("cors");
-const errorHandler = require("./handlers/errorHandler.js");
 const app = express();
+const cors = require("cors");
 const path = require("path");
-const mongoose = require("mongoose");
-const env = require("dotenv").config();
-const url = process.env.URL
+const errorHandler = require("./handlers/errorHandler.js");
+const questionsRouter = require("./routes/questionsRouter")
 
-mongoose.connect(url);
 
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-  console.log("Connected successfully");
-});
-
+app.use(cors());
 app.use(express.json());
 app.use("/", express.static(path.resolve(`./dist`)));
 

@@ -94,7 +94,41 @@ licensing agreement!", post: ["618e5486676ba91f85e33422"]}) <br>
 ### find all comments belonging to the post "Reports a bug in your code"
 -  db.comments.find({post: ["618e5486676ba91f85e3341f"]})
 ## bonus
-
+### End product - Job interview preparation questions system database
+### Insert the following documents into a questions collection:
+- db.createCollection("questions")
+- db.questions.insertMany([<br>
+{title: "What is nodejs" , <br>
+correctAnswer: "A JavaScript runtime environment" , <br>
+answers: [<br>
+"A JavaScript runtime environment", <br>
+"A c# extension" , <br>
+"Irish children's story"] , <br> 
+difficulty: 4 <br>
+} , <br>
+{title: "What is recursion in a programming language", <br>
+correctAnswer: "A technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result."  , <br>
+answers: [ <br>
+"When a senior tells you to rewrite your function" , <br> 
+"A technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result", <br> 
+" When you get up in the morning and miraculously your bug is fixed"] ,<br> 
+difficulty:3 <br>
+} ,  <br>
+{title: "What is DOM" ,  <br> 
+correctAnswer:"Document Object Model is a programming interface for HTML and XML documents",<br> answers: [<br>
+"Done On Morning A technique to a healthy work life",<br>
+"Document Object Maintain is a design pattern to save your front the correct way" ,<br>
+"Document Object Model is a programming interface for HTML and XML documents"],<br>
+difficulty:7 <br>
+} , <br>
+{title: "What is Object Destructuring" ,<br>
+ correctAnswer: "A new way to extract elements from an object or an array.",<br>
+answers:[<br>
+" A new way to extract elements from an object or an array" , <br>
+"A Memory Management feature that helps the garbage collector in js",<br>
+"Document Object Model is a programming interface for HTML and XML documents"],<br>
+ difficulty:8 <br>
+ }])
  
 
 

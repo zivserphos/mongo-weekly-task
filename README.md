@@ -1,9 +1,13 @@
-# commands in the mongo-shell:
+# MongoDB Weekend
+
+# Commands in the mongo-shell:
  ### Create collection: 
    - db.createCollection("students")
  ### insert students 
-  db.students.insert({name:"Ido" , surName: "Arbel", birth: "26/01/1998" , phone: "0526305421" , gender: "Male" , courses: ["Java" , "Math",]})
-  db.students.insertMany([<br>
+  - db.students.insert({<br>
+  name:"Ido" , surName: "Arbel", birth: "26/01/1998" , phone: "0526305421" , gender: "Male" , courses: ["Java" , "Math",] <br>
+  }) <br>
+  - db.students.insertMany([<br>
       {name:"Chen",surName:"Halevi",birth:"11/03/1997",phone:"0526323421",gender:"Male",courses:["Math","Law"]}, <br> 
       {name:"Koren",surName:"Gan-or",birth:"19/01/1997",phone:"0526305321",gender:"Male",courses:["JavaScript","Finance","Law"]},<br>
       {name:"Oryan",surName:"Levy",birth:"02/04/1998",phone:"0542305321",gender:"Male",courses:["JavaScript","Law"]},<br>
@@ -28,7 +32,7 @@
  ### Than 
  -  db.students.find({birth: {$gt: new Date("05-05-1998")}})
  
-### *Get all students where phone starts with 054*
+### Get all students where phone starts with 054
  - db.students.find({phone: {$regex: /^054/ } })  
 ### Get all students where phone not starts with 054(?)
  -  db.students.find({phone: {$not: {$regex: /^054/ }}})
@@ -103,7 +107,8 @@ correctAnswer: "A JavaScript runtime environment" , <br>
 answers: [<br>
 "A JavaScript runtime environment", <br>
 "A c# extension" , <br>
-"Irish children's story"] , <br> 
+"Irish children's story" <br>
+] , <br> 
 difficulty: 4 <br>
 } , <br>
 {title: "What is recursion in a programming language", <br>
@@ -111,14 +116,16 @@ correctAnswer: "A technique to iterate over an operation by having a function ca
 answers: [ <br>
 "When a senior tells you to rewrite your function" , <br> 
 "A technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result", <br> 
-" When you get up in the morning and miraculously your bug is fixed"] ,<br> 
+" When you get up in the morning and miraculously your bug is fixed" <br>
+] ,<br> 
 difficulty:3 <br>
 } ,  <br>
 {title: "What is DOM" ,  <br> 
 correctAnswer:"Document Object Model is a programming interface for HTML and XML documents",<br> answers: [<br>
 "Done On Morning A technique to a healthy work life",<br>
 "Document Object Maintain is a design pattern to save your front the correct way" ,<br>
-"Document Object Model is a programming interface for HTML and XML documents"],<br>
+"Document Object Model is a programming interface for HTML and XML documents" <br>
+],<br>
 difficulty:7 <br>
 } , <br>
 {title: "What is Object Destructuring" ,<br>
@@ -126,9 +133,7 @@ difficulty:7 <br>
 answers:[<br>
 " A new way to extract elements from an object or an array" , <br>
 "A Memory Management feature that helps the garbage collector in js",<br>
-"Document Object Model is a programming interface for HTML and XML documents"],<br>
+"Document Object Model is a programming interface for HTML and XML documents" <br>
+],<br>
  difficulty:8 <br>
  }])
- 
-
-
